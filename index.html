@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAPZSTORE.SITE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body class="bg-gray-900 text-white">
+    <div id="overlay" class="fixed inset-0 bg-blue bg-opacity-50 hidden z-40 transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <div class="flex">
+        <aside id="sidebar"
+            class="w-64 min-h-screen bg-blue-500/10 backdrop-blur-lg p-4 shadow-xl rounded-r-lg fixed left-0 top-0 transform -translate-x-full transition-transform md:translate-x-0 z-50 border border-border-500/20">
+            <div class="flex flex-col items-center mb-6">
+                <img src="../assets/image/game3.jpg" alt="" class="h-12 rounded-full shadow-md">
+                <h1 class="text-blue-200 text-lg font-bold mt-2 drop-shadow-md">DAPZSTORE</span> <i
+                        class="fas fa-check-circle text-blue-400"></i>
+            </div>
+
+            <ul class="mt-10 md:mt-0">
+                <li class="mb-3">
+                    <a href="#home"
+                        class="block p-3 rounded-lg bg-blue-500/10 hover:bg-white-500/20 transition text-blue-200 backdrop-blur-md border border-blue-500/50">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </li>
+                <li class="mb-3">
+                    <a href="#product"
+                        class="block p-3 rounded-lg bg-white-500/10 hover:bg-white-500/20 transition text-blue-200 backdrop-blur-md border border-blue-500/50">
+                        <i class="fas fa-shopping-cart"></i> Produk
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Content -->
+        <main class="flex-1 p-6 relative md:pl-72">
+            <header class="bg-blue-500/10 p-4 shadow-lg backdrop-blur-lg border border-black-500/30 rounded-lg mb-6 transition-all">
+                <div class="container mx-auto flex justify-between items-center">
+                    <!-- Logo / Title -->
+                    <h1 class="text-lg md:text-2xl font-bold flex items-center gap-2 text-blue-200 drop-shadow-md">
+                        <i class="fas fa-store text-blue-400 sm:hidden"></i> 
+                        DAPZSTORE WEBSITE 
+                        <i class="fas fa-check-circle text-blue-400 hidden sm:inline"></i>
+                    </h1>
+                    
+            
+                    <button id="sidebar-toggle" class="text-xl md:text-2xl md:hidden text-blue-300 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+            
+                    <nav class="hidden md:flex">
+                        <ul class="flex gap-6">
+                            <li>
+                                <a href="#home" class="hover:text-white text-blue-200 transition">
+                                    <i class="fas fa-home"></i> Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#product" class="hover:text-white text-blue-200 transition">
+                                    <i class="fas fa-box"></i> Product
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            
+            
+
+            <div id="home" class="w-full h-48 relative rounded-xl overflow-hidden bg-transparent mb-4">
+                <div class="absolute top-0 left-0 w-full bg-blue-500/50 text-white py-2 shadow-md text-center z-10">
+                    <marquee behavior="scroll" direction="left" scrollamount="7">
+                        <i class="fas fa-solid text-yellow-300"></i> DAPZSTORE SIAP MELAYANINYA ANDA DENGAN CEPAT!
+                        <i class="fas fa-dolphin text-yellow-300"></i>
+                    </marquee>
+                </div>
+                <video class="absolute inset-0 w-full h-full object-contain md:object-cover" autoplay loop muted>
+                    <source src="../assets/banner/banner.mp4" type="video/mp4">
+                    Browser tidak mendukung video.
+                </video>
+            </div>
+
+
+            <style>
+                #product {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(650px, 1fr));
+                    gap: 1.5rem;
+                }
+
+            </style>
+            <!-- Container Produk -->
+            <div id="product-container" class="space-y-8">
+                <!-- Kategori Layanan VPS -->
+                <div id="layanan-vps">
+                    <h2 class="text-xl font-bold text-blue-500 mb-3">Layanan VPS</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="product-vps"></div>
+                </div>
+            
+                <!-- Kategori Layanan GTPS -->
+                <div id="layanan-cpp">
+                    <h2 class="text-xl font-bold text-blue-500 mb-3">Layanan GTPS</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="product-cpp"></div>
+                </div>
+                
+                <!-- Kategori Layanan Panel -->
+                <div id="layanan-cpp">
+                    <h2 class="text-xl font-bold text-blue-500 mb-3">Layanan Panel</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="product-panel"></div>
+                </div>
+            </div>
+            
+            
+
+
+            <!-- Popup Modal -->
+            <div id="productModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[50] transition-opacity duration-300 opacity-0">
+                <div id="modalContent" class="bg-gray-800 p-6 rounded-lg w-96 relative transform scale-90 opacity-0 transition-all duration-300">
+                    <button onclick="closeModal()" class="absolute top-2 right-2 text-white text-xl">&times;</button>
+                    <img id="modalImage" src="" class="w-full aspect-square object-cover rounded-md">
+                    <h2 id="modalTitle" class="text-lg font-bold text-blue-300 mt-2"></h2>
+                    <p id="modalSpecs" class="text-blue-400 text-sm"></p>
+                    <p id="modalDescription" class="text-blue-400 text-xs mt-2"></p>
+                    <p id="modalPriceBefore" class="text-blue-400 text-sm line-through"></p>
+                    <p id="modalPriceAfter" class="text-blue-300 font-bold"></p>
+                    <p id="modalStock" class="text-green-400 text-sm"></p>
+                    <div class="mt-4 flex justify-between">
+                        <button onclick="openQris()" class="bg-blue-600/70 px-4 py-2 rounded-lg hover:bg-blue-700 transition shadow-md">
+                            <i class="fas fa-shopping-cart"></i> Beli.
+                        </button>
+                        <a id="modalWhatsapp" href="#" target="_blank" class="bg-blue-700/50 px-4 py-2 rounded-lg hover:bg-blue-800 transition shadow-md">
+                            <i class="fas fa-info-circle"></i> Hubungi
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+        <div id="qrisOverlay"
+            class="fixed inset-0 bg-black bg-opacity-50 hidden transition-opacity duration-300 z-50"></div>
+        <div id="qrisModal"
+            class="fixed inset-0 flex justify-center items-center hidden z-50 opacity-0 translate-y-10 transition-all duration-300">
+            <div
+                class="bg-blue-500/20 backdrop-blur-2xl border border-black-500/30 p-6 rounded-xl shadow-lg w-96 relative">
+                <button onclick="closeQris()"
+                    class="absolute top-3 right-3 text-white hover:text-gray-200 text-xl">&times;</button>
+                <h2 class="text-lg font-bold text-center text-white drop-shadow-md">Scan QRIS untuk Membayar</h2>
+                <img src="../assets/image/qris.jpg" alt="QRIS" class="w-full rounded-lg mt-4 shadow-md">
+                <p id="qrisTimer" class="text-center text-sm text-white mt-2">Sisa waktu: <span
+                        class="font-bold">60</span> detik</p>
+                <div class="mt-6 flex flex-col gap-3">
+                    <button onclick="downloadQris()"
+                        class="bg-blue-500/20 text-white px-5 py-3 rounded-xl hover:bg-blue-500/40 transition-all shadow-md backdrop-blur-xl border border-blue-500/30">
+                        <i class="fas fa-download"></i> Download QRIS
+                    </button>
+                    <a href="https://wa.me/62895360280174?text=Saya%20sudah%20melakukan%20pembayaran%20melalui%20QRIS."
+                        target="_blank" onclick="showSuccess()"
+                        class="bg-green-500/20 text-white px-5 py-3 rounded-xl hover:bg-green-500/40 transition-all shadow-md backdrop-blur-xl border border-green-500/30 flex items-center justify-center gap-2">
+                        <i class="fas fa-check-circle"></i> Sudah Bayar
+                    </a>
+
+                    <button onclick="closeQris()"
+                        class="bg-black-500/20 text-white px-5 py-3 rounded-xl hover:bg-black-500/40 transition-all shadow-md backdrop-blur-xl border border-blue-500/30">
+                        <i class="fas fa-times-circle"></i> Batal
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifikasi Berhasil Bayar -->
+        <div id="qrisSuccess"
+            class="fixed bottom-5 right-5 bg-green-600 text-white px-4 py-3 rounded-lg shadow-lg hidden z-50">
+            <i class="fas fa-check-circle"></i> Pembayaran Berhasil! Silakan konfirmasi ke WhatsApp.
+        </div>
+
+        <div
+            class="fixed bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2 hover:bg-blue-600 transition z-[9999]">
+            <i class="fab fa-telegram"></i>
+            <a href="https://t.me/iDapz402" target="_blank" class="font-bold">DapzSTORE</a>
+        </div>
+    </div>
+</body>
+<script src="../assets/js/script.js"></script>
+<script src="../assets/js/settingProduct.js"></script>
+<script src="../assets/js/generateProduct.js"></script>
+<script src="../assets/js/modalPopup.js"></script>
+</html>
